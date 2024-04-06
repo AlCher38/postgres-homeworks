@@ -1,22 +1,26 @@
 -- SQL-команды для создания таблиц
-
 CREATE TABLE employees
 (
-    post_id int PRIMARY KEY,
-    title varchar(100) NOT NULL,
-    content text
+	employee_id int PRIMARY KEY,
+	first_name varchar(100) NOT NULL,
+	last_name varchar(100) NOT NULL,
+	title varchar(100) NOT NULL,
+	birth_date Date,
+	notes text
 );
 
 CREATE TABLE customers
 (
-    post_id int PRIMARY KEY,
-    title varchar(100) NOT NULL,
-    content text
+	customer_id text PRIMARY KEY,
+	company_name text,
+	contact_name varchar(100) NOT NULL
 );
 
 CREATE TABLE orders
 (
-    post_id int PRIMARY KEY,
-    title varchar(100) NOT NULL,
-    content text
+	order_id int PRIMARY KEY,
+	customer_id text REFERENCES customers(customer_id),
+	employee_id int REFERENCES employees(employee_id),
+	order_date date,
+	ship_city varchar(100) NOT NULL
 );
